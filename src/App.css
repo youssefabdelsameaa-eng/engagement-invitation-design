@@ -1,0 +1,1340 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap');
+
+/* ==========================================
+   GLOBAL SETTINGS
+========================================== */
+
+:root {
+  --ivory: #f8f5eb;
+  --cream: #fffdf7;
+  --olive: #495a40;
+  --sage: #89977d;
+  --gold: #b49a65;
+  --muted: #807e70;
+  --border: #ded8c6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--ivory);
+  color: var(--olive);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: initial;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+.invitation-site {
+  min-height: 100vh;
+  overflow: clip;
+
+  font-family: 'Cormorant Garamond', Georgia, serif;
+
+  color: var(--olive);
+
+  background: radial-gradient(ellipse at 0% 10%, #e8ebdf 0%, transparent 35%),
+    radial-gradient(ellipse at 100% 85%, #e8e9dc 0%, transparent 35%),
+    var(--ivory);
+}
+
+.invitation-site[lang='ar'] {
+  font-family: 'Amiri', serif;
+}
+
+/* Keep headings in the intended olive palette */
+
+.invitation-site h1,
+.invitation-site h2,
+.invitation-site h3 {
+  color: var(--olive);
+  font-family: inherit;
+}
+
+/* ==========================================
+   LANGUAGE BUTTON
+========================================== */
+
+.language-button {
+  position: fixed;
+  top: 20px;
+  right: 22px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 17px;
+
+  background: rgba(255, 253, 247, 0.95);
+  color: var(--olive);
+
+  border: 1px solid var(--border);
+  border-radius: 30px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+
+  box-shadow: 0 3px 15px rgba(40, 50, 35, 0.06);
+
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.language-button:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+.invitation-site[lang='ar'] .language-button {
+  right: auto;
+  left: 22px;
+}
+
+/* ==========================================
+   TYPOGRAPHY
+========================================== */
+
+.eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 5px;
+  margin: 20px 0;
+}
+
+.script-heading {
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: var(--gold);
+  margin: 8px 0 32px;
+}
+
+/* ==========================================
+   COVER SCREEN
+========================================== */
+
+.cover-screen {
+  position: relative;
+
+  min-height: 100svh;
+
+  display: grid;
+  place-items: center;
+
+  isolation: isolate;
+
+  padding: 80px 20px 45px;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  max-width: 700px;
+
+  text-align: center;
+
+  animation: fadeInUp 0.9s ease both;
+}
+
+.cover-content h1 {
+  font-size: clamp(48px, 8vw, 78px);
+  font-weight: 400;
+  line-height: 1.1;
+
+  max-width: 100%;
+  margin: 18px auto;
+
+  padding: 0 10px;
+}
+
+.cover-subtitle {
+  font-size: 20px;
+  color: var(--muted);
+  margin: 0 0 35px;
+}
+
+.bottom-ornament {
+  color: var(--gold);
+  font-size: 20px;
+  margin-top: 28px;
+}
+
+/* ==========================================
+   COVER FLOWERS
+
+   These are kept at the outer edges so
+   they don't cover the main heading.
+========================================== */
+
+.cover-side {
+  position: absolute;
+  z-index: 1;
+
+  top: 0;
+  bottom: 0;
+
+  width: clamp(70px, 17vw, 185px);
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cover-side-left {
+  left: 0;
+
+  -webkit-mask-image: linear-gradient(to right, #000 55%, transparent 100%);
+
+  mask-image: linear-gradient(to right, #000 55%, transparent 100%);
+}
+
+.cover-side-right {
+  right: 0;
+
+  -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 100%);
+
+  mask-image: linear-gradient(to left, #000 55%, transparent 100%);
+}
+
+.cover-side img {
+  position: absolute;
+
+  width: clamp(200px, 27vw, 340px);
+  max-width: none;
+  height: auto;
+
+  pointer-events: none;
+  user-select: none;
+
+  animation: gentleReveal 1.4s ease both;
+}
+
+.cover-side-left img {
+  left: -35%;
+  bottom: 0;
+}
+
+.cover-side-right img {
+  right: -35%;
+  top: 0;
+
+  animation-delay: 0.2s;
+}
+
+/* ==========================================
+   ENVELOPE
+========================================== */
+
+.envelope-stage {
+  position: relative;
+
+  width: 310px;
+  height: 230px;
+
+  margin: 10px auto 22px;
+
+  display: grid;
+  place-items: center;
+
+  perspective: 1000px;
+}
+
+.new-envelope {
+  position: relative;
+
+  width: 280px;
+  height: 175px;
+
+  filter: drop-shadow(0 15px 15px rgba(57, 68, 49, 0.13));
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #bdc9b0;
+  border-radius: 3px;
+}
+
+.envelope-paper {
+  position: absolute;
+  z-index: 2;
+
+  top: 12px;
+  left: 18px;
+
+  width: 244px;
+  height: 148px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  background: var(--cream);
+  border: 1px solid #d7cfb9;
+
+  transition: transform 0.9s ease 0.3s;
+}
+
+.envelope-paper b {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.envelope-paper span {
+  color: var(--gold);
+}
+
+.envelope-pocket {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+
+  background: #d6decc;
+
+  clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-pocket::after {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background: #c6d2bb;
+
+  clip-path: polygon(0 100%, 50% 40%, 100% 100%);
+}
+
+.envelope-flap {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+
+  background: #b8c6aa;
+
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+
+  transform-origin: top center;
+  transition: transform 0.7s ease;
+}
+
+.wax-seal {
+  position: absolute;
+  z-index: 6;
+
+  top: 68px;
+  left: 119px;
+
+  width: 43px;
+  height: 43px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #b69b68;
+  border: 3px double #e7d5a7;
+
+  color: #fff9e9;
+  font-size: 23px;
+
+  box-shadow: 0 2px 6px #82745244;
+
+  transition: opacity 0.3s ease;
+}
+
+/* Envelope opens before screen changes */
+
+.is-opening .wax-seal {
+  opacity: 0;
+}
+
+.is-opening .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.is-opening .envelope-paper {
+  transform: translateY(-95px);
+}
+
+.is-opening .new-envelope {
+  animation: envelopeExit 0.6s ease 1s both;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 15px 30px;
+
+  background: var(--olive);
+  color: var(--cream);
+
+  border: 1px solid var(--olive);
+
+  text-decoration: none;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: transparent;
+  color: var(--olive);
+  transform: translateY(-2px);
+}
+
+.primary-button:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+/* ==========================================
+   MAIN INVITATION
+========================================== */
+
+.invitation-content {
+  width: 100%;
+  animation: invitationEnter 1s ease both;
+}
+
+.intro-section {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+
+  padding: 110px 20px 70px;
+  text-align: center;
+}
+
+.intro-heading,
+.intro-message-area {
+  position: relative;
+  z-index: 4;
+}
+
+.couple-names {
+  font-size: clamp(52px, 9vw, 88px);
+  font-weight: 400;
+  line-height: 1.1;
+
+  margin: 10px 0;
+}
+
+/* ==========================================
+   PHOTO AND FLOWER ANIMATION
+========================================== */
+
+.photo-scene {
+  position: relative;
+  isolation: isolate;
+
+  width: min(84%, 680px);
+
+  margin: 40px auto 65px;
+}
+
+.photo-frame {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  aspect-ratio: 16 / 10;
+
+  padding: 10px;
+
+  background: var(--cream);
+  border: 1px solid var(--border);
+
+  box-shadow: 0 15px 45px rgba(58, 70, 51, 0.12);
+
+  animation: photoAppear 1s ease 0.15s both;
+}
+
+.photo-frame > img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.photo-fallback {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(145deg, #e7ebdd, #faf4e9);
+
+  color: var(--olive);
+}
+
+.photo-fallback span {
+  font-size: 45px;
+  color: var(--gold);
+}
+
+/* Separate photo-only flower animation */
+
+.photo-bouquet {
+  position: absolute;
+  z-index: 3;
+
+  width: clamp(125px, 29%, 240px);
+
+  height: auto;
+
+  object-fit: contain;
+
+  pointer-events: none;
+  user-select: none;
+
+  filter: drop-shadow(0 5px 10px rgba(70, 76, 53, 0.1));
+}
+
+.photo-bouquet-left {
+  left: -15%;
+  bottom: -8%;
+
+  transform-origin: bottom left;
+
+  animation: growPhotoLeft 1.8s ease-out 0.35s both;
+}
+
+.photo-bouquet-right {
+  right: -15%;
+  bottom: -8%;
+
+  transform-origin: bottom right;
+
+  animation: growPhotoRight 1.8s ease-out 0.5s both;
+}
+
+.photo-sparkle {
+  position: absolute;
+  z-index: 4;
+
+  color: var(--gold);
+  font-size: 24px;
+
+  pointer-events: none;
+
+  animation: sparkleAppear 1s ease 1.7s both;
+}
+
+.photo-sparkle-left {
+  top: 13%;
+  left: -10%;
+}
+
+.photo-sparkle-right {
+  bottom: 14%;
+  right: -10%;
+}
+
+/* ==========================================
+   INTRODUCTION MESSAGE
+========================================== */
+
+.intro-message-area h2 {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.intro-message {
+  max-width: 540px;
+
+  margin: 0 auto;
+
+  color: var(--muted);
+
+  font-size: 21px;
+  line-height: 1.7;
+}
+
+.scroll-hint {
+  font-family: 'Montserrat', sans-serif;
+
+  color: var(--gold);
+
+  font-size: 10px;
+  letter-spacing: 3px;
+
+  margin-top: 34px;
+}
+
+.scroll-arrow {
+  display: block;
+
+  color: var(--olive);
+  font-size: 25px;
+
+  animation: scrollArrowBounce 2s ease-in-out infinite;
+}
+
+/* ==========================================
+   CONTENT SECTIONS
+========================================== */
+
+.content-section {
+  position: relative;
+  isolation: isolate;
+
+  width: min(100% - 12px, 1100px);
+
+  margin: 0 auto;
+
+  padding: 100px 65px;
+  text-align: center;
+
+  --flower-progress: 0;
+}
+
+.section-inner {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content-section h2 {
+  font-size: clamp(38px, 6vw, 56px);
+  font-weight: 400;
+
+  margin: 15px 0 35px;
+}
+
+.section-inner > p:not(.eyebrow) {
+  color: var(--muted);
+
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   RESTRICTED SIDE RAILS
+
+   This is the key change.
+
+   Each flower is clipped inside a narrow
+   area at the outer edge of its section.
+
+   It cannot enter the central content area.
+========================================== */
+
+.flower-rail {
+  position: absolute;
+  z-index: 1;
+
+  top: 0;
+  bottom: 0;
+
+  width: clamp(70px, 17vw, 180px);
+
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.flower-rail-left {
+  left: 0;
+
+  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
+
+  mask-image: linear-gradient(to right, black 55%, transparent 100%);
+}
+
+.flower-rail-right {
+  right: 0;
+
+  -webkit-mask-image: linear-gradient(to left, black 55%, transparent 100%);
+
+  mask-image: linear-gradient(to left, black 55%, transparent 100%);
+}
+
+/* ==========================================
+   REVERSIBLE SCROLL MOVEMENT
+
+   As --flower-progress increases:
+   the flowers slide into the rail.
+
+   As it decreases:
+   they retreat to the outside.
+
+   They never move beyond their rail.
+========================================== */
+
+.rail-flower {
+  position: absolute;
+
+  top: 12%;
+
+  width: clamp(180px, 25vw, 290px);
+
+  max-width: none;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: var(--flower-progress, 0);
+
+  will-change: transform, opacity;
+
+  filter: drop-shadow(0 4px 9px rgba(65, 78, 59, 0.07));
+}
+
+.flower-rail-left .rail-flower {
+  left: -35%;
+
+  transform: translate3d(
+    calc(-90px + 90px * var(--flower-progress, 0)),
+    calc(30px - 30px * var(--flower-progress, 0)),
+    0
+  );
+}
+
+.flower-rail-right .rail-flower {
+  right: -35%;
+
+  transform: translate3d(
+    calc(90px - 90px * var(--flower-progress, 0)),
+    calc(30px - 30px * var(--flower-progress, 0)),
+    0
+  );
+}
+
+/* Vary flower height between sections */
+
+.celebration-section .flower-rail-left .rail-flower {
+  top: 8%;
+}
+
+.celebration-section .flower-rail-right .rail-flower {
+  top: 24%;
+}
+
+.location-section .flower-rail-left .rail-flower {
+  top: 23%;
+}
+
+.location-section .flower-rail-right .rail-flower {
+  top: 2%;
+}
+
+.countdown-section .flower-rail-left .rail-flower {
+  top: 4%;
+}
+
+.countdown-section .flower-rail-right .rail-flower {
+  top: 19%;
+}
+
+.rsvp-section .flower-rail-left .rail-flower {
+  top: 17%;
+}
+
+.rsvp-section .flower-rail-right .rail-flower {
+  top: 1%;
+}
+
+/* ==========================================
+   EVENT DETAILS
+========================================== */
+
+.info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.info-card {
+  position: relative;
+  z-index: 4;
+
+  padding: 35px 15px;
+
+  background: rgba(255, 253, 247, 0.94);
+
+  border: 1px solid var(--border);
+}
+
+.detail-symbol {
+  display: inline-block;
+
+  font-size: 32px;
+  color: var(--gold);
+}
+
+.info-card h3,
+.venue-details h3 {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.info-card p,
+.venue-details p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   VENUE AND GOOGLE MAPS
+========================================== */
+
+.venue-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+
+  background: var(--cream);
+
+  border: 1px solid var(--border);
+
+  overflow: hidden;
+}
+
+.venue-map {
+  min-height: 320px;
+}
+
+.venue-map iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+
+  border: 0;
+}
+
+.map-empty {
+  min-height: 320px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #e5e9dc;
+  color: var(--sage);
+}
+
+.map-empty span {
+  font-size: 60px;
+}
+
+.map-empty p {
+  font-size: 18px;
+}
+
+.venue-details {
+  padding: 45px 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.venue-details .primary-button {
+  margin-top: 20px;
+}
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
+
+.countdown-section {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.countdown-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  max-width: 650px;
+
+  margin: 40px auto 0;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 10px;
+  padding: 25px 10px;
+
+  background: rgba(255, 253, 247, 0.95);
+
+  border: 1px solid var(--border);
+}
+
+.countdown-box strong {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(35px, 6vw, 62px);
+  font-weight: 400;
+  line-height: 1;
+
+  color: var(--olive);
+
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-box span {
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 10px;
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  color: var(--gold);
+}
+
+.countdown-finished {
+  font-size: 26px !important;
+  color: var(--olive) !important;
+}
+
+/* ==========================================
+   RSVP AND FOOTER
+========================================== */
+
+.rsvp-section {
+  min-height: 420px;
+}
+
+.rsvp-note {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.site-footer {
+  padding: 40px 20px 60px;
+
+  text-align: center;
+  color: var(--gold);
+}
+
+/* ==========================================
+   ARABIC TYPOGRAPHY
+========================================== */
+
+.invitation-site[lang='ar'] .eyebrow {
+  font-family: 'Amiri', serif;
+
+  font-size: 17px;
+  letter-spacing: 0;
+
+  text-transform: none;
+}
+
+.invitation-site[lang='ar'] .script-heading {
+  font-family: 'Amiri', serif;
+  font-size: 38px;
+}
+
+.invitation-site[lang='ar'] .content-section h2,
+.invitation-site[lang='ar'] .intro-message-area h2 {
+  line-height: 1.5;
+}
+
+.invitation-site[lang='ar'] .primary-button {
+  font-family: 'Amiri', serif;
+
+  font-size: 17px;
+  letter-spacing: 0;
+
+  text-transform: none;
+}
+
+.invitation-site[lang='ar'] .cover-subtitle,
+.invitation-site[lang='ar'] .intro-message {
+  line-height: 2;
+}
+
+.invitation-site[lang='ar'] .countdown-box span {
+  font-family: 'Amiri', serif;
+
+  font-size: 17px;
+  letter-spacing: 0;
+
+  text-transform: none;
+}
+
+.invitation-site[lang='ar'] .scroll-hint {
+  font-family: 'Amiri', serif;
+
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.95;
+  }
+}
+
+@keyframes envelopeExit {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes invitationEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes photoAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/*
+  These photo bouquets grow without
+  twisting or flipping the original artwork.
+*/
+
+@keyframes growPhotoLeft {
+  from {
+    opacity: 0;
+
+    transform: translate3d(-65px, 55px, 0) scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes growPhotoRight {
+  from {
+    opacity: 0;
+
+    transform: translate3d(65px, 55px, 0) scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes sparkleAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scrollArrowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(9px);
+  }
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 800px) {
+  .content-section {
+    padding: 75px 26px;
+  }
+
+  .flower-rail {
+    width: 115px;
+  }
+
+  .rail-flower {
+    width: 210px;
+  }
+
+  .photo-bouquet {
+    width: 30%;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+  .language-button {
+    top: 15px;
+    right: 15px;
+  }
+
+  .invitation-site[lang='ar'] .language-button {
+    left: 15px;
+  }
+
+  .cover-screen {
+    padding: 90px 15px 40px;
+  }
+
+  .cover-content h1 {
+    font-size: clamp(40px, 10vw, 60px);
+  }
+
+  .cover-subtitle {
+    font-size: 17px;
+  }
+
+  .cover-side {
+    width: 65px;
+  }
+
+  .cover-side img {
+    width: 195px;
+  }
+
+  .cover-side-left img {
+    left: -80px;
+  }
+
+  .cover-side-right img {
+    right: -80px;
+  }
+
+  .envelope-stage {
+    transform: scale(0.9);
+    margin: 0 auto 15px;
+  }
+
+  .intro-section {
+    padding: 105px 14px 50px;
+  }
+
+  .photo-scene {
+    width: 91%;
+    margin: 35px auto 60px;
+  }
+
+  .photo-frame {
+    padding: 6px;
+  }
+
+  .photo-bouquet {
+    width: 30%;
+    min-width: 100px;
+  }
+
+  .photo-bouquet-left {
+    left: -14%;
+    bottom: -5%;
+  }
+
+  .photo-bouquet-right {
+    right: -14%;
+    bottom: -5%;
+  }
+
+  .photo-sparkle {
+    font-size: 18px;
+  }
+
+  .content-section {
+    padding: 65px 16px;
+  }
+
+  .flower-rail {
+    width: 65px;
+  }
+
+  .rail-flower {
+    width: 165px;
+  }
+
+  .flower-rail-left .rail-flower {
+    left: -55px;
+  }
+
+  .flower-rail-right .rail-flower {
+    right: -55px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    padding: 22px 12px;
+  }
+
+  .venue-card {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-map,
+  .venue-map iframe,
+  .map-empty {
+    min-height: 240px;
+  }
+
+  .venue-details {
+    padding: 30px 20px;
+  }
+
+  .countdown-grid {
+    gap: 7px;
+  }
+
+  .countdown-box {
+    padding: 18px 4px;
+    gap: 8px;
+  }
+
+  .countdown-box span {
+    font-size: 8px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .rail-flower {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .photo-frame,
+  .photo-bouquet {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
