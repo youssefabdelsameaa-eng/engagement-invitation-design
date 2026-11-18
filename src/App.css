@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap');
 
-/* ==========================================
-   GLOBAL SETTINGS
-========================================== */
-
 :root {
   --ivory: #f8f5eb;
   --cream: #fffdf7;
@@ -13,22 +9,18 @@
   --muted: #807e70;
   --border: #ded8c6;
 }
-
 * {
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   margin: 0;
   min-width: 320px;
   background: var(--ivory);
   color: var(--olive);
 }
-
 #root {
   width: 100%;
   min-height: 100vh;
@@ -36,86 +28,57 @@ body {
   padding: 0;
   text-align: initial;
 }
-
 button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
-
 button {
   cursor: pointer;
 }
-
 .invitation-site {
   min-height: 100vh;
   overflow: clip;
-
   font-family: 'Cormorant Garamond', Georgia, serif;
-
   color: var(--olive);
-
   background: radial-gradient(ellipse at 0% 10%, #e8ebdf 0%, transparent 35%),
     radial-gradient(ellipse at 100% 85%, #e8e9dc 0%, transparent 35%),
     var(--ivory);
 }
-
 .invitation-site[lang='ar'] {
   font-family: 'Amiri', serif;
 }
-
-/* Keep headings in the intended olive palette */
-
 .invitation-site h1,
 .invitation-site h2,
 .invitation-site h3 {
   color: var(--olive);
   font-family: inherit;
 }
-
-/* ==========================================
-   LANGUAGE BUTTON
-========================================== */
-
 .language-button {
   position: fixed;
   top: 20px;
   right: 22px;
   z-index: 100;
-
   display: flex;
   align-items: center;
   gap: 8px;
-
   padding: 10px 17px;
-
   background: rgba(255, 253, 247, 0.95);
   color: var(--olive);
-
   border: 1px solid var(--border);
   border-radius: 30px;
-
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
-
   box-shadow: 0 3px 15px rgba(40, 50, 35, 0.06);
-
   transition: background 0.3s ease, transform 0.3s ease;
 }
-
 .language-button:hover {
   background: white;
   transform: translateY(-2px);
 }
-
 .invitation-site[lang='ar'] .language-button {
   right: auto;
   left: 22px;
 }
-
-/* ==========================================
-   TYPOGRAPHY
-========================================== */
-
 .eyebrow {
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
@@ -124,1201 +87,945 @@ button {
   text-transform: uppercase;
   color: var(--gold);
 }
-
 .ornament {
   color: var(--gold);
   font-size: 18px;
   letter-spacing: 5px;
   margin: 20px 0;
 }
-
 .script-heading {
   font-family: 'Great Vibes', cursive;
   font-size: 46px;
   color: var(--gold);
   margin: 8px 0 32px;
 }
-
-/* ==========================================
-   COVER SCREEN
-========================================== */
-
 .cover-screen {
   position: relative;
-
   min-height: 100svh;
-
   display: grid;
   place-items: center;
-
   isolation: isolate;
-
   padding: 80px 20px 45px;
 }
-
 .cover-content {
   position: relative;
   z-index: 3;
-
   width: 100%;
   max-width: 700px;
-
   text-align: center;
-
   animation: fadeInUp 0.9s ease both;
 }
-
 .cover-content h1 {
   font-size: clamp(48px, 8vw, 78px);
   font-weight: 400;
   line-height: 1.1;
-
   max-width: 100%;
   margin: 18px auto;
-
   padding: 0 10px;
 }
-
 .cover-subtitle {
   font-size: 20px;
   color: var(--muted);
   margin: 0 0 35px;
 }
-
 .bottom-ornament {
   color: var(--gold);
   font-size: 20px;
   margin-top: 28px;
 }
-
-/* ==========================================
-   COVER FLOWERS
-
-   These are kept at the outer edges so
-   they don't cover the main heading.
-========================================== */
-
 .cover-side {
   position: absolute;
   z-index: 1;
-
   top: 0;
   bottom: 0;
-
   width: clamp(70px, 17vw, 185px);
-
   overflow: hidden;
   pointer-events: none;
 }
-
 .cover-side-left {
   left: 0;
-
   -webkit-mask-image: linear-gradient(to right, #000 55%, transparent 100%);
-
   mask-image: linear-gradient(to right, #000 55%, transparent 100%);
 }
-
 .cover-side-right {
   right: 0;
-
   -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 100%);
-
   mask-image: linear-gradient(to left, #000 55%, transparent 100%);
 }
-
 .cover-side img {
   position: absolute;
-
   width: clamp(200px, 27vw, 340px);
   max-width: none;
   height: auto;
-
   pointer-events: none;
   user-select: none;
-
   animation: gentleReveal 1.4s ease both;
 }
-
 .cover-side-left img {
   left: -35%;
   bottom: 0;
 }
-
 .cover-side-right img {
   right: -35%;
   top: 0;
-
   animation-delay: 0.2s;
 }
-
-/* ==========================================
-   ENVELOPE
-========================================== */
-
 .envelope-stage {
   position: relative;
-
   width: 310px;
   height: 230px;
-
   margin: 10px auto 22px;
-
   display: grid;
   place-items: center;
-
   perspective: 1000px;
 }
-
 .new-envelope {
   position: relative;
-
   width: 280px;
   height: 175px;
-
   filter: drop-shadow(0 15px 15px rgba(57, 68, 49, 0.13));
 }
-
 .envelope-back {
   position: absolute;
   inset: 0;
   background: #bdc9b0;
   border-radius: 3px;
 }
-
 .envelope-paper {
   position: absolute;
   z-index: 2;
-
   top: 12px;
   left: 18px;
-
   width: 244px;
   height: 148px;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   gap: 10px;
-
   background: var(--cream);
   border: 1px solid #d7cfb9;
-
   transition: transform 0.9s ease 0.3s;
 }
-
 .envelope-paper b {
   font-size: 24px;
   font-weight: 400;
 }
-
 .envelope-paper span {
   color: var(--gold);
 }
-
 .envelope-pocket {
   position: absolute;
   z-index: 3;
   inset: 0;
-
   background: #d6decc;
-
   clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
 }
-
 .envelope-pocket::after {
   content: '';
-
   position: absolute;
   inset: 0;
-
   background: #c6d2bb;
-
   clip-path: polygon(0 100%, 50% 40%, 100% 100%);
 }
-
 .envelope-flap {
   position: absolute;
   z-index: 5;
   inset: 0;
-
   background: #b8c6aa;
-
   clip-path: polygon(0 0, 100% 0, 50% 60%);
-
   transform-origin: top center;
   transition: transform 0.7s ease;
 }
-
 .wax-seal {
   position: absolute;
   z-index: 6;
-
   top: 68px;
   left: 119px;
-
   width: 43px;
   height: 43px;
-
   display: grid;
   place-items: center;
-
   border-radius: 50%;
-
   background: #b69b68;
   border: 3px double #e7d5a7;
-
   color: #fff9e9;
   font-size: 23px;
-
   box-shadow: 0 2px 6px #82745244;
-
   transition: opacity 0.3s ease;
 }
-
-/* Envelope opens before screen changes */
-
 .is-opening .wax-seal {
   opacity: 0;
 }
-
 .is-opening .envelope-flap {
   transform: rotateX(180deg);
   z-index: 1;
 }
-
 .is-opening .envelope-paper {
   transform: translateY(-95px);
 }
-
 .is-opening .new-envelope {
   animation: envelopeExit 0.6s ease 1s both;
 }
-
-/* ==========================================
-   BUTTONS
-========================================== */
-
 .primary-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   gap: 12px;
-
   padding: 15px 30px;
-
   background: var(--olive);
   color: var(--cream);
-
   border: 1px solid var(--olive);
-
   text-decoration: none;
-
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   letter-spacing: 1px;
-
   text-transform: uppercase;
-
   transition: background 0.3s, color 0.3s, transform 0.3s;
 }
-
 .primary-button:hover:not(:disabled) {
   background: transparent;
   color: var(--olive);
   transform: translateY(-2px);
 }
-
 .primary-button:disabled {
   opacity: 0.65;
   cursor: default;
 }
-
-/* ==========================================
-   MAIN INVITATION
-========================================== */
-
 .invitation-content {
   width: 100%;
   animation: invitationEnter 1s ease both;
 }
-
 .intro-section {
   position: relative;
   isolation: isolate;
-
   width: 100%;
-
   padding: 110px 20px 70px;
   text-align: center;
 }
-
 .intro-heading,
 .intro-message-area {
   position: relative;
   z-index: 4;
 }
-
 .couple-names {
   font-size: clamp(52px, 9vw, 88px);
   font-weight: 400;
   line-height: 1.1;
-
   margin: 10px 0;
 }
-
-/* ==========================================
-   PHOTO AND FLOWER ANIMATION
-========================================== */
-
 .photo-scene {
   position: relative;
   isolation: isolate;
-
   width: min(84%, 680px);
-
   margin: 40px auto 65px;
 }
-
 .photo-frame {
   position: relative;
   z-index: 2;
-
   width: 100%;
-  aspect-ratio: 16 / 10;
-
+  aspect-ratio: 16/10;
   padding: 10px;
-
   background: var(--cream);
   border: 1px solid var(--border);
-
   box-shadow: 0 15px 45px rgba(58, 70, 51, 0.12);
-
   animation: photoAppear 1s ease 0.15s both;
 }
-
 .photo-frame > img {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
-
 .photo-fallback {
   width: 100%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   background: linear-gradient(145deg, #e7ebdd, #faf4e9);
-
   color: var(--olive);
 }
-
 .photo-fallback span {
   font-size: 45px;
   color: var(--gold);
 }
-
-/* Separate photo-only flower animation */
-
 .photo-bouquet {
   position: absolute;
   z-index: 3;
-
   width: clamp(125px, 29%, 240px);
-
   height: auto;
-
   object-fit: contain;
-
   pointer-events: none;
   user-select: none;
-
   filter: drop-shadow(0 5px 10px rgba(70, 76, 53, 0.1));
 }
-
 .photo-bouquet-left {
   left: -15%;
   bottom: -8%;
-
   transform-origin: bottom left;
-
   animation: growPhotoLeft 1.8s ease-out 0.35s both;
 }
-
 .photo-bouquet-right {
   right: -15%;
   bottom: -8%;
-
   transform-origin: bottom right;
-
   animation: growPhotoRight 1.8s ease-out 0.5s both;
 }
-
 .photo-sparkle {
   position: absolute;
   z-index: 4;
-
   color: var(--gold);
   font-size: 24px;
-
   pointer-events: none;
-
   animation: sparkleAppear 1s ease 1.7s both;
 }
-
 .photo-sparkle-left {
   top: 13%;
   left: -10%;
 }
-
 .photo-sparkle-right {
   bottom: 14%;
   right: -10%;
 }
-
-/* ==========================================
-   INTRODUCTION MESSAGE
-========================================== */
-
 .intro-message-area h2 {
   font-size: clamp(28px, 5vw, 42px);
   font-weight: 400;
   margin: 20px 0;
 }
-
 .intro-message {
   max-width: 540px;
-
   margin: 0 auto;
-
   color: var(--muted);
-
   font-size: 21px;
   line-height: 1.7;
 }
-
 .scroll-hint {
   font-family: 'Montserrat', sans-serif;
-
   color: var(--gold);
-
   font-size: 10px;
   letter-spacing: 3px;
-
   margin-top: 34px;
 }
-
 .scroll-arrow {
   display: block;
-
   color: var(--olive);
   font-size: 25px;
-
   animation: scrollArrowBounce 2s ease-in-out infinite;
 }
-
-/* ==========================================
-   CONTENT SECTIONS
-========================================== */
-
 .content-section {
   position: relative;
   isolation: isolate;
-
   width: min(100% - 12px, 1100px);
-
   margin: 0 auto;
-
   padding: 100px 65px;
   text-align: center;
-
   --flower-progress: 0;
 }
-
 .section-inner {
   position: relative;
   z-index: 3;
-
   width: 100%;
   margin: 0 auto;
 }
-
 .content-section h2 {
   font-size: clamp(38px, 6vw, 56px);
   font-weight: 400;
-
   margin: 15px 0 35px;
 }
-
 .section-inner > p:not(.eyebrow) {
   color: var(--muted);
-
   font-size: 20px;
   line-height: 1.7;
 }
-
-/* ==========================================
-   RESTRICTED SIDE RAILS
-
-   This is the key change.
-
-   Each flower is clipped inside a narrow
-   area at the outer edge of its section.
-
-   It cannot enter the central content area.
-========================================== */
-
 .flower-rail {
   position: absolute;
   z-index: 1;
-
   top: 0;
   bottom: 0;
-
   width: clamp(70px, 17vw, 180px);
-
   overflow: hidden;
   pointer-events: none;
   user-select: none;
 }
-
 .flower-rail-left {
   left: 0;
-
   -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
-
   mask-image: linear-gradient(to right, black 55%, transparent 100%);
 }
-
 .flower-rail-right {
   right: 0;
-
   -webkit-mask-image: linear-gradient(to left, black 55%, transparent 100%);
-
   mask-image: linear-gradient(to left, black 55%, transparent 100%);
 }
-
-/* ==========================================
-   REVERSIBLE SCROLL MOVEMENT
-
-   As --flower-progress increases:
-   the flowers slide into the rail.
-
-   As it decreases:
-   they retreat to the outside.
-
-   They never move beyond their rail.
-========================================== */
-
 .rail-flower {
   position: absolute;
-
   top: 12%;
-
   width: clamp(180px, 25vw, 290px);
-
   max-width: none;
   height: auto;
-
   object-fit: contain;
-
   opacity: var(--flower-progress, 0);
-
   will-change: transform, opacity;
-
   filter: drop-shadow(0 4px 9px rgba(65, 78, 59, 0.07));
 }
-
 .flower-rail-left .rail-flower {
   left: -35%;
-
   transform: translate3d(
     calc(-90px + 90px * var(--flower-progress, 0)),
     calc(30px - 30px * var(--flower-progress, 0)),
     0
   );
 }
-
 .flower-rail-right .rail-flower {
   right: -35%;
-
   transform: translate3d(
     calc(90px - 90px * var(--flower-progress, 0)),
     calc(30px - 30px * var(--flower-progress, 0)),
     0
   );
 }
-
-/* Vary flower height between sections */
-
 .celebration-section .flower-rail-left .rail-flower {
   top: 8%;
 }
-
 .celebration-section .flower-rail-right .rail-flower {
   top: 24%;
 }
-
 .location-section .flower-rail-left .rail-flower {
   top: 23%;
 }
-
 .location-section .flower-rail-right .rail-flower {
   top: 2%;
 }
-
 .countdown-section .flower-rail-left .rail-flower {
   top: 4%;
 }
-
 .countdown-section .flower-rail-right .rail-flower {
   top: 19%;
 }
-
 .rsvp-section .flower-rail-left .rail-flower {
   top: 17%;
 }
-
 .rsvp-section .flower-rail-right .rail-flower {
   top: 1%;
 }
-
-/* ==========================================
-   EVENT DETAILS
-========================================== */
-
 .info-grid {
   display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 18px;
 }
-
 .info-card {
   position: relative;
   z-index: 4;
-
   padding: 35px 15px;
-
   background: rgba(255, 253, 247, 0.94);
-
   border: 1px solid var(--border);
 }
-
 .detail-symbol {
   display: inline-block;
-
   font-size: 32px;
   color: var(--gold);
 }
-
 .info-card h3,
 .venue-details h3 {
   font-size: 28px;
   font-weight: 500;
   margin: 15px 0;
 }
-
 .info-card p,
 .venue-details p {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.6;
 }
-
-/* ==========================================
-   VENUE AND GOOGLE MAPS
-========================================== */
-
 .venue-card {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-
   background: var(--cream);
-
   border: 1px solid var(--border);
-
   overflow: hidden;
 }
-
 .venue-map {
   min-height: 320px;
 }
-
 .venue-map iframe {
   display: block;
-
   width: 100%;
   height: 100%;
   min-height: 320px;
-
   border: 0;
 }
-
 .map-empty {
   min-height: 320px;
   height: 100%;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   background: #e5e9dc;
   color: var(--sage);
 }
-
 .map-empty span {
   font-size: 60px;
 }
-
 .map-empty p {
   font-size: 18px;
 }
-
 .venue-details {
   padding: 45px 25px;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 }
-
 .venue-details .primary-button {
   margin-top: 20px;
 }
-
-/* ==========================================
-   COUNTDOWN
-========================================== */
-
 .countdown-section {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
-
 .countdown-grid {
   display: grid;
-
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
   gap: 16px;
-
   max-width: 650px;
-
   margin: 40px auto 0;
 }
-
 .countdown-box {
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   gap: 10px;
   padding: 25px 10px;
-
   background: rgba(255, 253, 247, 0.95);
-
   border: 1px solid var(--border);
 }
-
 .countdown-box strong {
   font-family: 'Cormorant Garamond', serif;
-
   font-size: clamp(35px, 6vw, 62px);
   font-weight: 400;
   line-height: 1;
-
   color: var(--olive);
-
   font-variant-numeric: tabular-nums;
 }
-
 .countdown-box span {
   font-family: 'Montserrat', sans-serif;
-
   font-size: 10px;
   letter-spacing: 1px;
-
   text-transform: uppercase;
-
   color: var(--gold);
 }
-
 .countdown-finished {
   font-size: 26px !important;
   color: var(--olive) !important;
 }
-
-/* ==========================================
-   RSVP AND FOOTER
-========================================== */
-
 .rsvp-section {
   min-height: 420px;
 }
-
-.rsvp-note {
-  font-style: italic;
-  color: var(--muted);
-}
-
 .site-footer {
   padding: 40px 20px 60px;
-
   text-align: center;
   color: var(--gold);
 }
 
-/* ==========================================
-   ARABIC TYPOGRAPHY
-========================================== */
-
-.invitation-site[lang='ar'] .eyebrow {
-  font-family: 'Amiri', serif;
-
-  font-size: 17px;
-  letter-spacing: 0;
-
-  text-transform: none;
+/* BILINGUAL RSVP FORM */
+.rsvp-form {
+  position: relative;
+  z-index: 4;
+  width: min(100%, 565px);
+  margin: 35px auto 0;
+  padding: 35px;
+  background: rgba(255, 253, 247, 0.97);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 45px rgba(57, 68, 49, 0.06);
+  text-align: start;
+}
+.rsvp-field {
+  margin-bottom: 23px;
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.rsvp-field label,
+.rsvp-field legend {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--olive);
+}
+.rsvp-field label span,
+.rsvp-field legend span {
+  color: #aa7866;
+}
+.rsvp-field input[type='text'],
+.rsvp-field select,
+.rsvp-field textarea {
+  display: block;
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #d8d6ca;
+  border-radius: 0;
+  outline: none;
+  background: #fffefa;
+  color: var(--olive);
+  font: 16px 'Montserrat', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.rsvp-field textarea {
+  resize: vertical;
+  min-height: 95px;
+}
+.rsvp-field input:focus,
+.rsvp-field select:focus,
+.rsvp-field textarea:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(137, 151, 125, 0.17);
+}
+.rsvp-field small {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.attendance-options {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.attendance-option {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  margin: 0 !important;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  background: #fffefa;
+  cursor: pointer;
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  transition: background 0.2s, border-color 0.2s;
+}
+.attendance-option.selected {
+  border-color: var(--sage);
+  background: #eef1e9;
+}
+.attendance-option input {
+  flex: 0 0 auto;
+  accent-color: var(--olive);
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+.attendance-option span {
+  color: var(--olive) !important;
+}
+.rsvp-error {
+  color: #a53d3d !important;
+  background: #fff1ee;
+  border: 1px solid #edc7c0;
+  padding: 12px;
+  margin: 0 0 18px;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+.rsvp-submit {
+  width: 100%;
+  font-size: 12px;
+}
+.rsvp-success {
+  text-align: center;
+}
+.rsvp-success h3 {
+  font-size: 31px;
+  font-weight: 500;
+  margin: 4px 0 10px;
+}
+.rsvp-success p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.success-icon {
+  color: var(--gold);
+  font-size: 40px;
+}
+.secondary-button {
+  padding: 12px 20px;
+  margin-top: 15px;
+  color: var(--olive);
+  background: transparent;
+  border: 1px solid var(--olive);
+  font: 13px 'Montserrat', sans-serif;
+}
+.secondary-button:hover {
+  background: #eef1e9;
 }
 
+/* ARABIC */
+.invitation-site[lang='ar'] .eyebrow {
+  font-family: 'Amiri', serif;
+  font-size: 17px;
+  letter-spacing: 0;
+  text-transform: none;
+}
 .invitation-site[lang='ar'] .script-heading {
   font-family: 'Amiri', serif;
   font-size: 38px;
 }
-
 .invitation-site[lang='ar'] .content-section h2,
 .invitation-site[lang='ar'] .intro-message-area h2 {
   line-height: 1.5;
 }
-
 .invitation-site[lang='ar'] .primary-button {
   font-family: 'Amiri', serif;
-
   font-size: 17px;
   letter-spacing: 0;
-
   text-transform: none;
 }
-
 .invitation-site[lang='ar'] .cover-subtitle,
 .invitation-site[lang='ar'] .intro-message {
   line-height: 2;
 }
-
 .invitation-site[lang='ar'] .countdown-box span {
   font-family: 'Amiri', serif;
-
   font-size: 17px;
   letter-spacing: 0;
-
   text-transform: none;
 }
-
 .invitation-site[lang='ar'] .scroll-hint {
   font-family: 'Amiri', serif;
-
   font-size: 16px;
   letter-spacing: 0;
 }
+.invitation-site[lang='ar'] .rsvp-field input[type='text'],
+.invitation-site[lang='ar'] .rsvp-field select,
+.invitation-site[lang='ar'] .rsvp-field textarea {
+  font-family: 'Amiri', serif;
+  font-size: 19px;
+}
+.invitation-site[lang='ar'] .rsvp-field label,
+.invitation-site[lang='ar'] .rsvp-field legend,
+.invitation-site[lang='ar'] .attendance-option,
+.invitation-site[lang='ar'] .secondary-button {
+  font-family: 'Amiri', serif;
+  font-size: 20px !important;
+}
 
-/* ==========================================
-   ANIMATIONS
-========================================== */
-
+/* ANIMATIONS */
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @keyframes gentleReveal {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 0.95;
   }
 }
-
 @keyframes envelopeExit {
   from {
     opacity: 1;
     transform: scale(1);
   }
-
   to {
     opacity: 0;
     transform: scale(1.15);
   }
 }
-
 @keyframes invitationEnter {
   from {
     opacity: 0;
     transform: translateY(25px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @keyframes photoAppear {
   from {
     opacity: 0;
     transform: scale(0.94);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
-
-/*
-  These photo bouquets grow without
-  twisting or flipping the original artwork.
-*/
-
 @keyframes growPhotoLeft {
   from {
     opacity: 0;
-
     transform: translate3d(-65px, 55px, 0) scale(0.5);
   }
-
   to {
     opacity: 1;
-
     transform: translate3d(0, 0, 0) scale(1);
   }
 }
-
 @keyframes growPhotoRight {
   from {
     opacity: 0;
-
     transform: translate3d(65px, 55px, 0) scale(0.5);
   }
-
   to {
     opacity: 1;
-
     transform: translate3d(0, 0, 0) scale(1);
   }
 }
-
 @keyframes sparkleAppear {
   from {
     opacity: 0;
     transform: scale(0.5);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
-
 @keyframes scrollArrowBounce {
   0%,
   100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(9px);
   }
 }
 
-/* ==========================================
-   TABLET
-========================================== */
-
 @media (max-width: 800px) {
   .content-section {
     padding: 75px 26px;
   }
-
   .flower-rail {
     width: 115px;
   }
-
   .rail-flower {
     width: 210px;
   }
-
   .photo-bouquet {
     width: 30%;
   }
 }
-
-/* ==========================================
-   MOBILE
-========================================== */
-
 @media (max-width: 650px) {
   .language-button {
     top: 15px;
     right: 15px;
   }
-
   .invitation-site[lang='ar'] .language-button {
     left: 15px;
   }
-
   .cover-screen {
     padding: 90px 15px 40px;
   }
-
   .cover-content h1 {
     font-size: clamp(40px, 10vw, 60px);
   }
-
   .cover-subtitle {
     font-size: 17px;
   }
-
   .cover-side {
     width: 65px;
   }
-
   .cover-side img {
     width: 195px;
   }
-
   .cover-side-left img {
     left: -80px;
   }
-
   .cover-side-right img {
     right: -80px;
   }
-
   .envelope-stage {
     transform: scale(0.9);
     margin: 0 auto 15px;
   }
-
   .intro-section {
     padding: 105px 14px 50px;
   }
-
   .photo-scene {
     width: 91%;
     margin: 35px auto 60px;
   }
-
   .photo-frame {
     padding: 6px;
   }
-
   .photo-bouquet {
     width: 30%;
     min-width: 100px;
   }
-
   .photo-bouquet-left {
     left: -14%;
     bottom: -5%;
   }
-
   .photo-bouquet-right {
     right: -14%;
     bottom: -5%;
   }
-
   .photo-sparkle {
     font-size: 18px;
   }
-
   .content-section {
     padding: 65px 16px;
   }
-
   .flower-rail {
     width: 65px;
   }
-
   .rail-flower {
     width: 165px;
   }
-
   .flower-rail-left .rail-flower {
     left: -55px;
   }
-
   .flower-rail-right .rail-flower {
     right: -55px;
   }
-
   .info-grid {
     grid-template-columns: 1fr;
   }
-
   .info-card {
     padding: 22px 12px;
   }
-
   .venue-card {
     grid-template-columns: 1fr;
   }
-
   .venue-map,
   .venue-map iframe,
   .map-empty {
     min-height: 240px;
   }
-
   .venue-details {
     padding: 30px 20px;
   }
-
   .countdown-grid {
     gap: 7px;
   }
-
   .countdown-box {
     padding: 18px 4px;
     gap: 8px;
   }
-
   .countdown-box span {
     font-size: 8px;
   }
+  .rsvp-form {
+    padding: 22px 17px;
+  }
+  .rsvp-field label,
+  .rsvp-field legend {
+    font-size: 18px;
+  }
 }
-
-/* ==========================================
-   ACCESSIBILITY
-========================================== */
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1326,15 +1033,1011 @@ button {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-
   .rail-flower {
     opacity: 1 !important;
     transform: none !important;
   }
-
   .photo-frame,
   .photo-bouquet {
     opacity: 1 !important;
     animation: none !important;
+  }
+}
+
+/* =======================================================
+   PRIVATE ADMIN DASHBOARD - independent from invitation
+======================================================= */
+.admin-page {
+  min-height: 100vh;
+  padding: 36px clamp(16px, 4vw, 56px) 75px;
+  background: #f8f5eb;
+  color: #495a40;
+  font-family: 'Montserrat', sans-serif;
+}
+.admin-page * {
+  box-sizing: border-box;
+}
+.admin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #ded8c6;
+}
+.admin-header h1 {
+  margin: 4px 0 8px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(35px, 5vw, 55px);
+  font-weight: 500;
+  color: #495a40;
+}
+.admin-header p {
+  margin: 0;
+  color: #807e70;
+}
+.admin-header .admin-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #b49a65;
+}
+.admin-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-outline,
+.admin-primary {
+  border: 1px solid #495a40;
+  padding: 11px 15px;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin-outline {
+  background: #fffdf7;
+  color: #495a40;
+}
+.admin-primary {
+  background: #495a40;
+  color: #fffdf7;
+}
+.admin-outline:disabled,
+.admin-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.admin-login {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 65px auto;
+  padding: 30px;
+  background: #fffdf7;
+  border: 1px solid #ded8c6;
+  box-shadow: 0 12px 35px #495a4010;
+}
+.admin-login h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 34px;
+  font-weight: 500;
+  margin: 0;
+}
+.admin-login p {
+  color: #807e70;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.admin-login label {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.admin-login input,
+.admin-toolbar input,
+.admin-toolbar select {
+  min-width: 0;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ded8c6;
+  border-radius: 4px;
+  background: #fff;
+  color: #253523;
+  font: inherit;
+  font-size: 13px;
+}
+.admin-login .admin-primary {
+  margin-top: 14px;
+}
+.admin-error {
+  padding: 12px 15px;
+  background: #fff1ed;
+  border: 1px solid #e9bbb1;
+  color: #903b31 !important;
+  font-size: 13px;
+}
+.admin-content {
+  max-width: 1400px;
+  margin: 28px auto;
+}
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.admin-stat {
+  background: #fffdf7;
+  border: 1px solid #ded8c6;
+  padding: 20px 16px;
+  min-height: 118px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+.admin-stat span {
+  font-size: 12px;
+  color: #807e70;
+  line-height: 1.4;
+}
+.admin-stat strong {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 43px;
+  font-weight: 500;
+  line-height: 1;
+}
+.admin-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 26px 0 12px;
+}
+.admin-toolbar input {
+  flex: 2 1 245px;
+}
+.admin-toolbar select {
+  flex: 1 1 170px;
+}
+.admin-toolbar button {
+  min-height: 44px;
+}
+.admin-meta {
+  color: #807e70;
+  font-size: 12px;
+  margin: 8px 0 15px;
+}
+.admin-table-wrap {
+  overflow-x: auto;
+  background: #fffdf7;
+  border: 1px solid #ded8c6;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  text-align: start;
+  font-size: 13px;
+}
+.admin-table th {
+  background: #e9eddf;
+  font-weight: 600;
+  padding: 17px 13px;
+  text-align: start;
+  white-space: nowrap;
+}
+.admin-table td {
+  padding: 16px 13px;
+  border-top: 1px solid #e8e2d5;
+  vertical-align: top;
+}
+.admin-guest-name {
+  font-weight: 600;
+  min-width: 140px;
+}
+.admin-message {
+  max-width: 300px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #68675c;
+}
+.admin-status {
+  white-space: nowrap;
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  background: #ece9df;
+  color: #626153;
+  font-size: 11px;
+}
+.admin-status-attending {
+  background: #e2efdf;
+  color: #3d6939;
+}
+.admin-status-not_attending {
+  background: #fae7e1;
+  color: #984e43;
+}
+.admin-status-maybe {
+  background: #f5edcf;
+  color: #796421;
+}
+.admin-delete {
+  border: 1px solid #e7b9ad;
+  color: #903b31;
+  border-radius: 4px;
+  padding: 7px 10px;
+  background: #fff8f5;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.admin-center {
+  text-align: center;
+  padding: 30px;
+  color: #807e70;
+  font-size: 14px;
+}
+.admin-page[dir='rtl'] {
+  font-family: 'Amiri', serif;
+}
+.admin-page[dir='rtl'] .admin-header h1,
+.admin-page[dir='rtl'] .admin-login h2 {
+  font-family: 'Amiri', serif;
+}
+@media (max-width: 900px) {
+  .admin-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .admin-page {
+    padding: 18px 12px 50px;
+  }
+  .admin-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .admin-stat {
+    min-height: 98px;
+    padding: 15px;
+  }
+  .admin-stat strong {
+    font-size: 35px;
+  }
+  .admin-login {
+    margin: 35px auto;
+    padding: 20px;
+  }
+  .admin-header-actions {
+    width: 100%;
+  }
+  .admin-toolbar button {
+    flex: 1;
+  }
+}
+
+/* =======================================================
+   NOV 17 — REQUESTED FLORAL POSITION AND LANGUAGE EDITS
+   All other site / RSVP / admin styles remain untouched.
+======================================================= */
+
+/* Cover: same artwork on both sides, mirrored on the right. */
+.cover-side-right img.cover-mirror-image {
+  transform: scaleX(-1);
+  transform-origin: center;
+}
+
+/* Photo: tighten all florals to the picture edges and keep the right side balanced. */
+.photo-bouquet-left {
+  left: -1.4%;
+  bottom: -0.8%;
+  width: clamp(165px, 22%, 235px);
+  transform-origin: center center;
+  animation: growPhotoLeftLarge 1.7s ease-out 0.35s both;
+}
+
+.photo-bouquet-right-top {
+  right: -1.1%;
+  top: -1.2%;
+  width: clamp(126px, 16.5%, 190px);
+  transform-origin: center center;
+  animation: growPhotoRightTop 1.45s ease-out 0.48s both;
+}
+
+.photo-bouquet-right-bottom {
+  right: -2.6%;
+  bottom: -2%;
+  width: clamp(126px, 16.5%, 185px);
+  transform-origin: center;
+  animation: growPhotoRightBottom 1.5s ease-out 0.62s both;
+}
+
+/* Location / RSVP / Countdown: maintain clipped side rails.
+   Countdown right side now mirrors the left more precisely. */
+.location-symmetric .rail-flower,
+.countdown-symmetric .rail-flower,
+.rsvp-symmetric .rail-flower {
+  top: 6%;
+  width: clamp(200px, 26vw, 310px);
+}
+
+.location-symmetric .flower-rail-right .rail-flower,
+.rsvp-symmetric .flower-rail-right .rail-flower,
+.countdown-symmetric .flower-rail-right .rail-flower {
+  transform: translate3d(
+      calc(90px - 90px * var(--flower-progress, 0)),
+      calc(30px - 30px * var(--flower-progress, 0)),
+      0
+    )
+    scaleX(-1);
+}
+
+/* Countdown: exact mirrored positioning for both sides. */
+.countdown-symmetric .flower-rail-left .rail-flower,
+.countdown-symmetric .flower-rail-right .rail-flower {
+  top: 2%;
+  width: clamp(188px, 24vw, 270px);
+}
+
+.countdown-symmetric .flower-rail-left .rail-flower {
+  left: -36%;
+  transform: translate3d(
+      calc(-90px + 90px * var(--flower-progress, 0)),
+      calc(18px - 18px * var(--flower-progress, 0)),
+      0
+    )
+    scaleX(-1);
+}
+
+.countdown-symmetric .flower-rail-right .rail-flower {
+  right: -36%;
+  transform: translate3d(
+      calc(90px - 90px * var(--flower-progress, 0)),
+      calc(18px - 18px * var(--flower-progress, 0)),
+      0
+    )
+    scaleX(1);
+}
+
+@keyframes growPhotoLeftLarge {
+  from {
+    opacity: 0;
+    transform: translate3d(-45px, 32px, 0) rotate(180deg) scale(0.58);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(180deg) scale(1);
+  }
+}
+
+@keyframes growPhotoRightTop {
+  from {
+    opacity: 0;
+    transform: translate3d(34px, -24px, 0) rotate(180deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(180deg) scale(1);
+  }
+}
+
+@keyframes growPhotoRightBottom {
+  from {
+    opacity: 0;
+    transform: translate3d(30px, 28px, 0) rotate(-90deg) scale(0.58);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(-90deg) scale(1);
+  }
+}
+
+@media (max-width: 800px) {
+  .location-symmetric .rail-flower,
+  .countdown-symmetric .rail-flower,
+  .rsvp-symmetric .rail-flower {
+    width: 210px;
+  }
+
+  .photo-bouquet-left {
+    width: clamp(130px, 24%, 180px);
+  }
+  .photo-bouquet-right-top,
+  .photo-bouquet-right-bottom {
+    width: clamp(96px, 17%, 140px);
+  }
+}
+
+@media (max-width: 650px) {
+  .photo-bouquet-left {
+    left: -1%;
+    bottom: 0;
+    width: 23%;
+    min-width: 74px;
+  }
+
+  .photo-bouquet-right-top {
+    right: -1%;
+    top: -1%;
+    width: 18%;
+    min-width: 58px;
+  }
+
+  .photo-bouquet-right-bottom {
+    right: -2.5%;
+    bottom: -1.5%;
+    width: 18%;
+    min-width: 60px;
+  }
+
+  .location-symmetric .rail-flower,
+  .countdown-symmetric .rail-flower,
+  .rsvp-symmetric .rail-flower {
+    width: 165px;
+  }
+
+  .countdown-symmetric .flower-rail-left .rail-flower,
+  .countdown-symmetric .flower-rail-right .rail-flower {
+    top: 3%;
+    width: 155px;
+  }
+}
+
+/* =======================================================
+   STEP 10: DECEMBER 2026 ENGAGEMENT CALENDAR
+   Only the date detail card is affected.
+======================================================= */
+.info-card-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.engagement-calendar {
+  width: min(100%, 225px);
+  margin: 19px auto 0;
+  padding: 17px 12px 13px;
+  border: 1px solid #e4dbc5;
+  background: linear-gradient(150deg, #fffdfa, #f5f3e9);
+  box-shadow: 0 4px 16px rgba(74, 82, 58, 0.04);
+  direction: ltr;
+}
+.calendar-month {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: var(--olive);
+  text-align: center;
+  padding-bottom: 10px;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px;
+  text-align: center;
+}
+.calendar-weekday,
+.calendar-day {
+  display: grid;
+  place-items: center;
+  height: 23px;
+  min-width: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.calendar-weekday {
+  color: #ad9771;
+  font-size: 9px;
+}
+.calendar-day {
+  color: #777a6b;
+}
+.calendar-engagement-day {
+  position: relative;
+  z-index: 1;
+}
+.calendar-ring {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #b49a65;
+  border-radius: 50%;
+  background: #fffdf7;
+  box-shadow: inset 0 0 0 1px #eadfc8;
+  color: #495a40;
+  font-weight: 600;
+  transform: rotate(-12deg);
+}
+.calendar-ring::before {
+  content: '◆';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #b49a65;
+  text-shadow: 0 1px 0 #fff;
+}
+.calendar-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(180, 154, 101, 0.28);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.invitation-site[lang='ar'] .calendar-month,
+.invitation-site[lang='ar'] .calendar-weekday {
+  font-family: 'Amiri', serif;
+  letter-spacing: 0;
+  font-size: 13px;
+}
+@media (max-width: 650px) {
+  .engagement-calendar {
+    width: min(100%, 225px);
+  }
+}
+
+/* =======================================================
+   STEP 11 — BALANCED DATE / TIME / VENUE INFORMATION CARDS
+   Refined to reduce awkward empty space and visually balance the 3 cards.
+======================================================= */
+.celebration-section .info-grid {
+  align-items: stretch;
+}
+
+.celebration-section .info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 30px;
+  padding-bottom: 24px;
+}
+
+.celebration-section .info-card > p {
+  margin: 0 0 12px;
+  min-height: 1.6em;
+}
+
+.celebration-section .info-card-visual {
+  width: min(100%, 235px);
+  margin: 10px auto 0;
+  padding-top: 0;
+}
+
+.celebration-section .info-card-date .engagement-calendar {
+  width: 100%;
+  margin: 0;
+}
+
+.celebration-section .info-card-time .info-card-visual,
+.celebration-section .info-card-venue .info-card-visual {
+  width: min(100%, 235px);
+}
+
+.engagement-clock-panel {
+  min-height: 294px;
+  padding: 12px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4dbc5;
+  background: linear-gradient(150deg, #fffdfa, #f5f3e9);
+  box-shadow: 0 4px 16px rgba(74, 82, 58, 0.04);
+  position: relative;
+}
+
+.engagement-clock-panel::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(180, 154, 101, 0.22);
+  pointer-events: none;
+}
+
+.engagement-clock {
+  display: block;
+  width: min(100%, 188px);
+  height: auto;
+  overflow: visible;
+}
+
+.clock-panel-ornament {
+  color: var(--gold);
+  font-size: 15px;
+  letter-spacing: 4px;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.venue-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  padding: 8px;
+  border: 1px solid #e4dbc5;
+  background: linear-gradient(145deg, #f8f5ec, #fffdfa);
+  box-shadow: 0 4px 16px rgba(74, 82, 58, 0.04);
+}
+
+.venue-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(180, 154, 101, 0.25);
+  pointer-events: none;
+}
+
+.venue-preview-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+@media (max-width: 650px) {
+  .celebration-section .info-card-visual,
+  .celebration-section .info-card-time .info-card-visual,
+  .celebration-section .info-card-venue .info-card-visual {
+    width: min(100%, 235px);
+  }
+
+  .engagement-clock-panel {
+    min-height: 272px;
+  }
+}
+
+/* =======================================================
+   STEP 14 — PHOTO FIX, PAGE-EDGE STORY FLOWERS, CARD BALANCE
+   Scoped overrides; RSVP/admin/other flower sections stay unchanged.
+======================================================= */
+
+/* The WebP hero is in a <picture>, so both picture and image must fill
+   the original 16:10 frame. Never let intrinsic image dimensions expand it. */
+.photo-frame > picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.photo-frame > picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Inline photo story: reuses the same clipped, scroll-controlled flower rails
+   AND artwork as The Celebration. The rails share the same section width. */
+.content-section.story-journey-inline {
+  width: min(100% - 12px, 1100px);
+  padding: 76px 0 66px;
+  margin: 14px auto 10px;
+  isolation: isolate;
+}
+.story-journey-inline .flower-rail-left .rail-flower {
+  top: 8%;
+}
+.story-journey-inline .flower-rail-right .rail-flower {
+  top: 24%;
+}
+.story-journey-inner {
+  position: relative;
+  z-index: 3;
+  width: min(960px, calc(100% - 150px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 300px) minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+}
+.story-card {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+/* Both portraits now share the SAME width, centered around the connector. */
+.story-card-teen {
+  justify-self: end;
+}
+.story-card-current {
+  justify-self: start;
+  margin-top: 116px;
+}
+.story-photo-frame {
+  width: min(100%, 285px);
+  background: linear-gradient(145deg, #fffdfa, #f7f3e9);
+  border: 1px solid var(--border);
+  padding: 10px;
+  box-shadow: 0 18px 42px rgba(58, 70, 51, 0.1);
+}
+.story-card-teen .story-photo-frame {
+  width: min(100%, 285px);
+  transform: rotate(-2deg);
+}
+.story-card-current .story-photo-frame {
+  width: min(100%, 285px);
+  transform: rotate(2deg);
+}
+.story-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center;
+}
+.story-connector {
+  position: relative;
+  z-index: 2;
+  justify-self: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 24px 0 0;
+  text-align: center;
+}
+.story-arrow-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.story-caption {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  color: #806f51;
+  font: 31px/1.35 'Great Vibes', cursive;
+  white-space: nowrap;
+}
+.invitation-site[lang='ar'] .story-caption {
+  font: 27px/1.7 'Amiri', serif;
+}
+
+/* Equal visual dimensions across the calendar, clock and venue photo.
+   The calendar's grid expands vertically, not just the outer white box. */
+.celebration-section .info-card > p {
+  margin-bottom: 14px;
+}
+.celebration-section .info-card-date .info-card-visual,
+.celebration-section .info-card-time .info-card-visual,
+.celebration-section .info-card-venue .info-card-visual {
+  width: min(100%, 246px);
+}
+.celebration-section .info-card-visual {
+  margin: 10px auto 0;
+  padding-top: 0;
+}
+.celebration-section .info-card-date .engagement-calendar {
+  width: 100%;
+  height: 330px;
+  min-height: 330px;
+  margin: 0;
+  padding: 17px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.celebration-section .calendar-month {
+  flex: 0 0 auto;
+  padding-bottom: 10px;
+}
+.celebration-section .calendar-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+}
+.celebration-section .calendar-weekday,
+.celebration-section .calendar-day {
+  height: auto;
+  min-height: 0;
+  font-size: 11px;
+}
+.celebration-section .calendar-weekday {
+  font-size: 10px;
+}
+.engagement-clock-panel {
+  height: 330px;
+  min-height: 330px;
+  padding: 14px 14px 12px;
+}
+.engagement-clock {
+  width: min(100%, 194px);
+}
+.celebration-section .venue-photo-wrap {
+  height: 330px;
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid #e6dcc6;
+  border-radius: 10px;
+  background: #fffdfa;
+  box-shadow: 0 10px 24px rgba(74, 82, 58, 0.06);
+}
+.celebration-section .venue-photo-wrap::before {
+  display: none;
+}
+.celebration-section .venue-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 5px;
+  object-fit: cover;
+  object-position: center 42%;
+}
+@media (max-width: 980px) {
+  .content-section.story-journey-inline {
+    padding: 48px 0 40px;
+  }
+  .story-journey-inner {
+    width: min(100% - 90px, 650px);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+  .story-card-teen,
+  .story-card-current {
+    justify-self: center;
+    margin-top: 0;
+  }
+  .story-card-current {
+    order: 3;
+  }
+  .story-card-teen .story-photo-frame,
+  .story-card-current .story-photo-frame {
+    width: min(100%, 310px);
+  }
+  .story-connector {
+    width: min(100%, 280px);
+    margin: 0 auto;
+    order: 2;
+  }
+}
+@media (max-width: 650px) {
+  .content-section.story-journey-inline {
+    margin: 8px auto 10px;
+    padding: 40px 0 36px;
+  }
+  .story-journey-inner {
+    width: min(100% - 82px, 340px);
+  }
+  .story-card-teen .story-photo-frame,
+  .story-card-current .story-photo-frame {
+    width: min(100%, 264px);
+    transform: none;
+  }
+  .story-caption {
+    font-size: 27px;
+  }
+  .invitation-site[lang='ar'] .story-caption {
+    font-size: 23px;
+  }
+  .celebration-section .info-card-date .info-card-visual,
+  .celebration-section .info-card-time .info-card-visual,
+  .celebration-section .info-card-venue .info-card-visual {
+    width: min(100%, 232px);
+  }
+  .celebration-section .info-card-date .engagement-calendar,
+  .engagement-clock-panel,
+  .celebration-section .venue-photo-wrap {
+    height: 310px;
+    min-height: 310px;
+  }
+}
+
+/* STEP 16 — OPTIONAL BACKGROUND MUSIC (does not alter invitation layout) */
+.music-controls {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 120;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  align-items: flex-start;
+  pointer-events: none;
+}
+.invitation-site[lang='ar'] .music-controls {
+  left: auto;
+  right: 18px;
+  align-items: flex-end;
+}
+.music-toggle {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  background: rgba(255, 253, 247, 0.96);
+  color: var(--olive);
+  box-shadow: 0 4px 18px rgba(57, 68, 49, 0.1);
+  padding: 10px 15px;
+  min-height: 43px;
+  font: 11px 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.music-toggle:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+.music-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.music-icon {
+  font-size: 19px;
+  line-height: 1;
+  color: var(--gold);
+}
+.music-toggle-active .music-icon {
+  animation: music-note-pulse 2.8s ease-in-out infinite;
+}
+.music-error {
+  pointer-events: auto;
+  max-width: min(280px, 75vw);
+  margin: 0;
+  padding: 9px 11px;
+  font: 12px/1.5 'Montserrat', sans-serif;
+  color: #7d463a;
+  background: rgba(255, 250, 245, 0.97);
+  border: 1px solid #dfc6b9;
+  box-shadow: 0 4px 12px rgba(57, 68, 49, 0.08);
+}
+.invitation-site[lang='ar'] .music-toggle,
+.invitation-site[lang='ar'] .music-error {
+  font-family: 'Amiri', serif;
+  font-size: 16px;
+}
+@keyframes music-note-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.74;
+    transform: scale(1.12);
+  }
+}
+@media (max-width: 650px) {
+  .music-controls {
+    left: 10px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+  }
+  .invitation-site[lang='ar'] .music-controls {
+    right: 10px;
+  }
+  .music-toggle {
+    min-height: 42px;
+    padding: 10px 12px;
+  }
+  .music-text {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle-active .music-icon {
+    animation: none;
   }
 }
