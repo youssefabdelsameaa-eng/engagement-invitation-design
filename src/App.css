@@ -945,3 +945,101 @@ button { cursor:pointer; }
   .engagement-clock-panel,
   .celebration-section .venue-photo-wrap { height: 255px; min-height: 255px; }
 }
+
+
+/* ========================================================
+   STEP 18 — SMALL-SCREEN STORY PHOTO + DOWNWARD ARROW FIX
+   Keep the desktop photograph positions, original floral rails,
+   RSVP, audio, and all other invitation sections unchanged.
+======================================================== */
+.story-arrow-mobile { display: none; }
+
+@media (max-width: 768px) {
+  /* Fixed-size portrait cards instead of auto-stretching grid items. */
+  .content-section.story-journey-inline .story-journey-inner {
+    box-sizing: border-box;
+    width: min(100% - 38px, 370px);
+    max-width: 370px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    justify-items: center;
+  }
+  .content-section.story-journey-inline .story-card {
+    box-sizing: border-box;
+    position: relative;
+    width: min(66vw, 236px);
+    max-width: 236px;
+    min-width: 0;
+    margin: 0;
+  }
+  .content-section.story-journey-inline .story-card-teen {
+    justify-self: start;
+    order: 1;
+  }
+  .content-section.story-journey-inline .story-card-current {
+    justify-self: end;
+    order: 3;
+  }
+  .content-section.story-journey-inline .story-photo-frame,
+  .content-section.story-journey-inline .story-card-teen .story-photo-frame,
+  .content-section.story-journey-inline .story-card-current .story-photo-frame {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 236px;
+    padding: 7px;
+    transform: none;
+  }
+  .content-section.story-journey-inline .story-photo {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+  /* Aim the arrow downward toward the second photo, never across the caption. */
+  .content-section.story-journey-inline .story-connector {
+    box-sizing: border-box;
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(100%, 190px);
+    max-width: 190px;
+    justify-self: center;
+    order: 2;
+    margin: 2px auto 7px;
+    text-align: center;
+  }
+  .story-journey-inline .story-arrow-svg { display: none; }
+  .story-journey-inline .story-arrow-mobile {
+    display: block;
+    width: min(100%, 122px);
+    height: 110px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+  .story-journey-inline .story-caption {
+    position: relative;
+    display: block;
+    margin: 2px auto 0;
+    font-size: 25px;
+    line-height: 1.4;
+    white-space: normal;
+  }
+  .invitation-site[lang='ar'] .story-journey-inline .story-caption {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 380px) {
+  .content-section.story-journey-inline .story-card {
+    width: min(65vw, 208px);
+  }
+  .content-section.story-journey-inline .story-photo-frame,
+  .content-section.story-journey-inline .story-card-teen .story-photo-frame,
+  .content-section.story-journey-inline .story-card-current .story-photo-frame {
+    max-width: 208px;
+  }
+  .story-journey-inline .story-arrow-mobile { height: 96px; }
+}
