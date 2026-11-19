@@ -315,6 +315,17 @@ function StoryMoments({ t, isArabic }) {
             />
             <circle cx={isArabic ? '294' : '26'} cy="30" r="4" fill="#b49a65" opacity=".92" />
           </svg>
+          {/* Mobile-only downward Cupid arrow; desktop arrow is unchanged. */}
+          <svg viewBox="0 0 140 125" className="story-arrow-mobile" aria-hidden="true" focusable="false">
+            <path
+              d={isArabic ? 'M98 8 C36 18, 18 56, 55 82 S88 104, 78 113' : 'M42 8 C104 18, 122 56, 85 82 S52 104, 62 113'}
+              fill="none" stroke="#b49a65" strokeWidth="2.8" strokeLinecap="round"
+            />
+            <path
+              d={isArabic ? 'M62 99 L78 115 L91 99' : 'M49 99 L62 115 L76 99'}
+              fill="none" stroke="#b49a65" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"
+            />
+          </svg>
           <p className="story-caption">{t.storyLabel}</p>
         </div>
 
