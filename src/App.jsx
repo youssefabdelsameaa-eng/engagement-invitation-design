@@ -141,19 +141,19 @@ function useScrollFlowers(active) {
   }, [active]);
 }
 
-function FlowerRail({ image, side }) {
+function FlowerRail({ image, side, eager = false }) {
   return (
     <div className={`flower-rail flower-rail-${side}`} aria-hidden="true">
-      <img src={image} alt="" className="rail-flower" draggable="false" loading="lazy" decoding="async" />
+      <img src={image} alt="" className="rail-flower" draggable="false" loading={eager ? "eager" : "lazy"} decoding="async" />
     </div>
   );
 }
 
-function FloralSection({ children, className = '', leftImage, rightImage }) {
+function FloralSection({ children, className = '', leftImage, rightImage, eagerFlowers = false }) {
   return (
     <section className={`content-section floral-section ${className}`} data-flower-section>
-      <FlowerRail image={leftImage} side="left" />
-      <FlowerRail image={rightImage} side="right" />
+      <FlowerRail image={leftImage} side="left" eager={eagerFlowers} />
+      <FlowerRail image={rightImage} side="right" eager={eagerFlowers} />
       <div className="section-inner">{children}</div>
     </section>
   );
@@ -270,10 +270,16 @@ function CouplePhoto({ t }) {
         {failed ? (
           <div className="photo-fallback"><span>♡</span><p>{t.photoMissing}</p></div>
         ) : (
-          <picture>
-            <source srcSet="/couple-photo.webp" type="image/webp" />
-            <img src="/couple-photo.png" alt={t.photoAlt} onError={() => setFailed(true)} decoding="async" fetchPriority="high" />
-          </picture>
+          <img
+            src="/couple-photo.webp"
+            alt={t.photoAlt}
+            onError={() => setFailed(true)}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            width="1280"
+            height="800"
+          />
         )}
       </div>
       <span className="photo-sparkle photo-sparkle-left" aria-hidden="true">✧</span>
@@ -286,12 +292,12 @@ function StoryMoments({ t, isArabic }) {
   return (
     <section className="content-section floral-section celebration-section story-journey-inline"
       data-flower-section aria-label={t.storyLabel}>
-      <FlowerRail image={flowers.section1} side="left" />
-      <FlowerRail image={flowers.section3} side="right" />
+      <FlowerRail image={flowers.section1} side="left" eager />
+      <FlowerRail image={flowers.section3} side="right" eager />
       <div className="story-journey-inner">
         <article className="story-card story-card-teen">
           <div className="story-photo-frame">
-            <img src={storyPhotos.teen} alt={t.storyTeenAlt} className="story-photo" loading="lazy" decoding="async" />
+            <img src={storyPhotos.teen} alt={t.storyTeenAlt} className="story-photo" loading="lazy" decoding="async" width="960" height="1200" />
           </div>
         </article>
 
@@ -314,7 +320,7 @@ function StoryMoments({ t, isArabic }) {
 
         <article className="story-card story-card-current">
           <div className="story-photo-frame">
-            <img src={storyPhotos.current} alt={t.storyCurrentAlt} className="story-photo" loading="lazy" decoding="async" />
+            <img src={storyPhotos.current} alt={t.storyCurrentAlt} className="story-photo" loading="lazy" decoding="async" width="1200" height="1500" />
           </div>
         </article>
       </div>
@@ -777,6 +783,30 @@ function App() {
     hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'Africa/Cairo'
   }).format(date);
 
+  // Prepare the artwork used immediately after the envelope opens.
+  // Other photos and lower-page decorations remain lazy-loaded.
+  useEffect(() => {
+    if (adminRoute) return;
+    const link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = 'https://ggewmhvjrnibzgzhusaa.supabase.co';
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
+
+    const warm = ['/couple-photo.webp', flowers.photoLeft, flowers.photoRight];
+    const warmedImages = warm.map((url) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = url;
+      return image;
+    });
+    return () => {
+      // Keep the warmed images in the browser cache; remove only the hint.
+      if (link.parentNode) link.parentNode.removeChild(link);
+      void warmedImages;
+    };
+  }, [adminRoute]);
+
   useScrollFlowers(screen === 'invitation' && !adminRoute);
   useEffect(() => {
     if (screen !== 'opening') return;
@@ -862,7 +892,6 @@ function App() {
 
   function openInvitation() {
     if (screen !== 'cover') return;
-    [flowers.photoLeft, flowers.photoRight].forEach((url) => { const image = new Image(); image.src = url; });
     playMusic();
     setScreen('opening');
   }
@@ -876,7 +905,7 @@ function App() {
       <audio
         ref={musicRef}
         src={backgroundMusicUrl}
-        preload="none"
+        preload="auto"
         loop
         onError={() => { setMusicPlaying(false); setMusicError(true); }}
         onPause={() => setMusicPlaying(false)}
@@ -908,10 +937,10 @@ function App() {
       {screen !== 'invitation' ? (
         <section className="cover-screen">
           <div className="cover-side cover-side-left">
-            <img src={flowers.section1} alt="" aria-hidden="true" decoding="async" />
+            <img src={flowers.section1} alt="" aria-hidden="true" decoding="async" loading="eager" fetchPriority="high" />
           </div>
           <div className="cover-side cover-side-right">
-            <img src={flowers.section1} className="cover-mirror-image" alt="" aria-hidden="true" decoding="async" />
+            <img src={flowers.section1} className="cover-mirror-image" alt="" aria-hidden="true" decoding="async" loading="eager" fetchPriority="high" />
           </div>
           <div className="cover-content">
             <div className="ornament">✦ ─── ♡ ─── ✦</div>
@@ -953,7 +982,7 @@ function App() {
 
           <StoryMoments t={t} isArabic={isArabic} />
 
-          <FloralSection className="celebration-section" leftImage={flowers.section1} rightImage={flowers.section3}>
+          <FloralSection className="celebration-section" leftImage={flowers.section1} rightImage={flowers.section3} eagerFlowers>
             <p className="eyebrow">✦ {t.engagement} ✦</p><h2>{t.celebration}</h2>
             <div className="info-grid">
               <article className="info-card info-card-date">
